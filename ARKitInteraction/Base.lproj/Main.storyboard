@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -143,56 +142,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="safeArea" id="PiU-3i-kld"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meter" translatesAutoresizingMaskIntoConstraints="NO" id="AHb-wj-PLQ">
-                                <rect key="frame" x="16" y="627" width="20" height="20"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="按住..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UD2-kH-9st">
-                                <rect key="frame" x="16" y="590" width="325" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8So-NN-OeY">
-                                <rect key="frame" x="10" y="622" width="32" height="30"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reset" translatesAutoresizingMaskIntoConstraints="NO" id="IW4-IZ-iB1" userLabel="Reset Measure Image View">
-                                <rect key="frame" x="16" y="564" width="18" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="tRL-t4-doU"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Waw-Hb-AVb" userLabel="Reset Measure Button">
-                                <rect key="frame" x="4" y="551" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="5AS-RQ-lCW"/>
-                                    <constraint firstAttribute="height" constant="44" id="QsX-DX-d0u"/>
-                                </constraints>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8So-NN-OeY" firstAttribute="top" secondItem="Waw-Hb-AVb" secondAttribute="bottom" constant="27" id="1tT-qv-41l"/>
-                            <constraint firstItem="IW4-IZ-iB1" firstAttribute="leading" secondItem="RLh-bf-1c3" secondAttribute="leadingMargin" id="6e9-6i-Ob4"/>
-                            <constraint firstItem="UD2-kH-9st" firstAttribute="top" secondItem="IW4-IZ-iB1" secondAttribute="bottom" constant="8" symbolic="YES" id="Def-Bz-O3J"/>
                             <constraint firstItem="3cb-dQ-oXx" firstAttribute="width" secondItem="xcf-ic-uGo" secondAttribute="width" constant="-5" id="Fg7-D6-Eh5"/>
-                            <constraint firstItem="AHb-wj-PLQ" firstAttribute="centerY" secondItem="8So-NN-OeY" secondAttribute="centerY" id="Ibr-1u-0DF"/>
                             <constraint firstItem="3cb-dQ-oXx" firstAttribute="centerX" secondItem="xcf-ic-uGo" secondAttribute="centerX" id="KPf-Pf-2mp"/>
-                            <constraint firstItem="Waw-Hb-AVb" firstAttribute="centerY" secondItem="IW4-IZ-iB1" secondAttribute="centerY" id="LyU-GC-NJH"/>
-                            <constraint firstItem="Waw-Hb-AVb" firstAttribute="centerX" secondItem="AHb-wj-PLQ" secondAttribute="centerX" id="QEO-vZ-aE9"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" id="Sdx-fT-fqG"/>
-                            <constraint firstItem="Waw-Hb-AVb" firstAttribute="centerX" secondItem="8So-NN-OeY" secondAttribute="centerX" id="W4x-6j-4LC"/>
-                            <constraint firstItem="IW4-IZ-iB1" firstAttribute="leading" secondItem="UD2-kH-9st" secondAttribute="leading" id="Wwq-ty-pnI"/>
-                            <constraint firstAttribute="bottom" secondItem="AHb-wj-PLQ" secondAttribute="bottom" constant="20" symbolic="YES" id="Y2D-Ca-SQ0"/>
                             <constraint firstItem="xcf-ic-uGo" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="163.5" id="ajJ-d9-mOg"/>
-                            <constraint firstAttribute="bottom" secondItem="Waw-Hb-AVb" secondAttribute="bottom" constant="72" id="bU5-al-9TT"/>
-                            <constraint firstItem="IW4-IZ-iB1" firstAttribute="leading" secondItem="AHb-wj-PLQ" secondAttribute="leading" id="bgt-Of-Yno"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="top" secondItem="RLh-bf-1c3" secondAttribute="top" id="boO-ZZ-neH"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="brT-qF-Rdk"/>
                             <constraint firstItem="tnx-rc-95S" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="cGf-LE-hzb"/>
                             <constraint firstItem="3cb-dQ-oXx" firstAttribute="centerY" secondItem="xcf-ic-uGo" secondAttribute="centerY" id="dtP-zr-OKq"/>
-                            <constraint firstItem="Waw-Hb-AVb" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="4" id="hcw-0G-0Mt"/>
-                            <constraint firstItem="AHb-wj-PLQ" firstAttribute="top" secondItem="UD2-kH-9st" secondAttribute="bottom" constant="22" id="ixN-qb-VBF"/>
-                            <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="IW4-IZ-iB1" secondAttribute="trailing" constant="341" id="ju8-oq-0cq"/>
                             <constraint firstAttribute="bottom" secondItem="E6c-py-dvH" secondAttribute="bottom" id="kLb-BI-xJ4"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="xcf-ic-uGo" secondAttribute="trailing" constant="163.5" id="kN8-Ve-Xqq"/>
                             <constraint firstItem="3cb-dQ-oXx" firstAttribute="height" secondItem="xcf-ic-uGo" secondAttribute="height" constant="-5" id="szW-aA-CXv"/>
@@ -204,10 +164,6 @@
                     </view>
                     <connections>
                         <outlet property="addObjectButton" destination="xcf-ic-uGo" id="uFa-W2-4Iu"/>
-                        <outlet property="messageLabel" destination="UD2-kH-9st" id="TXL-kB-cqt"/>
-                        <outlet property="meterImageView" destination="AHb-wj-PLQ" id="QcX-zR-oLW"/>
-                        <outlet property="resetMeasureButton" destination="Waw-Hb-AVb" id="ggY-0W-o88"/>
-                        <outlet property="resetMeasureImageView" destination="IW4-IZ-iB1" id="WE3-Gd-5e9"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
                         <outlet property="spinner" destination="3cb-dQ-oXx" id="rnE-Xe-cDE"/>
                         <outlet property="targetImageView" destination="VRF-pd-MG1" id="JQp-J3-hI4"/>
@@ -287,8 +243,6 @@
     </scenes>
     <resources>
         <image name="add" width="48" height="48"/>
-        <image name="meter" width="50" height="137"/>
-        <image name="reset" width="44" height="44"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
         <image name="targetWhite" width="60" height="60"/>

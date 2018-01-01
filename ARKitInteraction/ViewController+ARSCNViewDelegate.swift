@@ -132,7 +132,6 @@ extension ViewController {
     //        sceneView.session = session
     //        loadingView.startAnimating()
     //        meterImageView.isHidden = true
-    //        messageLabel.text = "Detecting the world…"
     //        resetButton.isHidden = true
     //        resetImageView.isHidden = true
     //        session.run(sessionConfiguration, options: [.resetTracking, .removeExistingAnchors])
@@ -142,11 +141,7 @@ extension ViewController {
     
     func detectMeasureObjects() {
         guard let worldPosition = sceneView.realWorldVector(screenPosition: view.center) else { return }
-        targetImageView.isHidden = false
-        meterImageView.isHidden = false
-        if lines.isEmpty {
-            messageLabel.text = "Hold screen & move your phone…"
-        }
+        
         // loadingView.stopAnimating()
         if isMeasuring {
             if startMeasureValue == vectorZero {
@@ -155,7 +150,6 @@ extension ViewController {
             }
             endMeasureValue = worldPosition
             currentMeasureLine?.update(to: endMeasureValue)
-            messageLabel.text = currentMeasureLine?.distance(to: endMeasureValue) ?? "计算中…"
         }
     }
 }
