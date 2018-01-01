@@ -275,14 +275,16 @@ extension ViewController {
         
         //self.targetImageView.isHidden = !ViewController.isMeasureing;
         targetImageView.image = ViewController.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
-        
-        
     }
+
+    func saveCurrentLineAndContinue(){
+        if let line = currentMeasureLine {
+            lines.append(line)
+            currentMeasureLine = nil
+        }
+
+        resetMeasureValues()
     
-    func setupMeasureView(){
-        self.targetImageView.isHidden = false
-        // self.meterImageView.isHidden = true
-        // self.messageLabel.text = "Detecting the world…"
     }
 
     func resetMeasureValues(){

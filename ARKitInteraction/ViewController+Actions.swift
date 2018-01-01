@@ -19,8 +19,6 @@ extension ViewController: UIGestureRecognizerDelegate {
     /// Displays the `VirtualObjectSelectionViewController` from the `addObjectButton` or in response to a tap gesture in the `sceneView`.
     @IBAction func showVirtualObjectSelectionViewController() {
       
-        
-        
         // Ensure adding objects is an available action and we are not loading another object (to avoid concurrent modifications of the scene).
         guard !addObjectButton.isHidden && !virtualObjectLoader.isLoading else { return }
         
@@ -62,8 +60,6 @@ extension ViewController: UIGestureRecognizerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.isRestartAvailable = true
         }
-        
-     
     }
 }
 

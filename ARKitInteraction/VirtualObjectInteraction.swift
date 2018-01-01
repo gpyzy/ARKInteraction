@@ -125,18 +125,24 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     @objc
     func didTap(_ gesture: UITapGestureRecognizer) {
-        if(!ViewController.isAddingObject){
-            return
+        if(ViewController.isMeasureing){
+            
+            /// Measure TODO
+            
         }
-        let touchLocation = gesture.location(in: sceneView)
+        else
+        {
+            let touchLocation = gesture.location(in: sceneView)
+            
+            if let tappedObject = sceneView.virtualObject(at: touchLocation) {
+                // Select a new object.
+                selectedObject = tappedObject
+            } else if let object = selectedObject {
+                // Teleport the object to whereever the user touched the screen.
+                translate(object, basedOn: touchLocation, infinitePlane: false)
+            }
+        }
         
-        if let tappedObject = sceneView.virtualObject(at: touchLocation) {
-            // Select a new object.
-            selectedObject = tappedObject
-        } else if let object = selectedObject {
-            // Teleport the object to whereever the user touched the screen.
-            translate(object, basedOn: touchLocation, infinitePlane: false)
-        }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
