@@ -31,11 +31,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetMeasureButton: UIButton!
     lazy var lines: [Line] = []
     var currentLine: Line?
-    lazy var isMeasuring = false;
     lazy var startMeasureValue = SCNVector3()
     lazy var endMeasureValue = SCNVector3()
     var currentMeasureLine: Line?
     lazy var vectorZero = SCNVector3()
+    @IBOutlet var measureSwitch: UISwitch!
     /*Measure*/
 
 
@@ -220,12 +220,12 @@ class ViewController: UIViewController {
     /// Measure
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         resetMeasureValues()
-        isMeasuring = true
+        //measureSwitch.isOn=true
         targetImageView.image = UIImage(named: "targetGreen")
     }
     /// Measure
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isMeasuring = false
+        //measureSwitch.isOn=false
         targetImageView.image = UIImage(named: "targetWhite")
         if let line = currentLine {
             lines.append(line)
@@ -268,6 +268,12 @@ extension ViewController {
         lines.removeAll()
     }
     
+    @IBAction func measureFeatureSwitch()
+    {
+       //isMeasuring = measureSwitch.isOn
+        //self.targetImageView.isHidden = !self.targetImageView.isHidden;
+    }
+    
     func setupMeasureView(){
         self.targetImageView.isHidden = true
         self.meterImageView.isHidden = true
@@ -277,7 +283,7 @@ extension ViewController {
     }
 
     func resetMeasureValues(){
-        isMeasuring = false
+        measureSwitch.isOn=false;
         startMeasureValue = SCNVector3()
         endMeasureValue =  SCNVector3()
     }
