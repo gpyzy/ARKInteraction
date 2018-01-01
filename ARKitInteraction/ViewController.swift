@@ -21,9 +21,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    static var isAddingObject: Bool = true;
-
-    
     /*Measure*/
     @IBOutlet weak var targetImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
@@ -37,7 +34,6 @@ class ViewController: UIViewController {
     var currentMeasureLine: Line?
     lazy var vectorZero = SCNVector3()
     @IBOutlet var measureSwitch: UISwitch!
-    static var isMeasureing: Bool = false
 
     /*Measure*/
 
@@ -270,11 +266,11 @@ extension ViewController {
             resetMeasureValues()
         }
         
-       ViewController.isMeasureing = self.measureSwitch.isOn
-       ViewController.isAddingObject = !ViewController.isMeasureing;
+       sceneView.isMeasureing = self.measureSwitch.isOn
+       sceneView.isAddingObject = !sceneView.isMeasureing;
         
         //self.targetImageView.isHidden = !ViewController.isMeasureing;
-        targetImageView.image = ViewController.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
+        targetImageView.image = sceneView.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
     }
 
     func saveCurrentLineAndContinue(){

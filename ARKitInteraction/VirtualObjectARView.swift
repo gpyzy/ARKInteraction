@@ -10,6 +10,10 @@ import ARKit
 
 class VirtualObjectARView: ARSCNView {
 
+    var isMeasureing: Bool = false
+    var isAddingObject: Bool = true;
+
+    
     // MARK: - Types
 
     struct HitTestRay {

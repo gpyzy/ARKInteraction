@@ -19,7 +19,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
             self.updateFocusSquare()
             
             /// Measure
-            if(ViewController.isMeasureing){
+            if(self.sceneView.isMeasureing){
                 DispatchQueue.main.async { [weak self] in
                     self?.detectMeasureObjects()
                 }
@@ -146,7 +146,7 @@ extension ViewController {
         guard let worldPosition = sceneView.realWorldVector(screenPosition: view.center) else { return }
         
         // loadingView.stopAnimating()
-        if (ViewController.isMeasureing) {
+        if (sceneView.isMeasureing) {
             if startMeasureValue == vectorZero {
                 startMeasureValue = worldPosition
                 currentMeasureLine = Line(sceneView: sceneView, startVector: startMeasureValue, unit: unit)

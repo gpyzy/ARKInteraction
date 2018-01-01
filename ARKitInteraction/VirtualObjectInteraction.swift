@@ -56,7 +56,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     @objc
     func didPan(_ gesture: ThresholdPanGesture) {
-        if(!ViewController.isAddingObject){
+        if(!sceneView.isAddingObject){
             return
         }
         switch gesture.state {
@@ -106,7 +106,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     /// - Tag: didRotate
     @objc
     func didRotate(_ gesture: UIRotationGestureRecognizer) {
-        if(!ViewController.isAddingObject){
+        if(!sceneView.isAddingObject){
             return
         }
         guard gesture.state == .changed else { return }
@@ -125,7 +125,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     @objc
     func didTap(_ gesture: UITapGestureRecognizer) {
-        if(ViewController.isMeasureing){
+        if(sceneView.isMeasureing){
             
             /// Measure TODO
             
