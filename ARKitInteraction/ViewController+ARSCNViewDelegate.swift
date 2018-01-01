@@ -19,9 +19,12 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
             self.updateFocusSquare()
             
             /// Measure
-            DispatchQueue.main.async { [weak self] in
-                self?.detectMeasureObjects()
+            if(ViewController.isMeasureing){
+                DispatchQueue.main.async { [weak self] in
+                    self?.detectMeasureObjects()
+                }
             }
+            
         }
         
         // If light estimation is enabled, update the intensity of the model's lights and the environment map

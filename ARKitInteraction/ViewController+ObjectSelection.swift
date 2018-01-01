@@ -38,6 +38,9 @@ extension ViewController: VirtualObjectSelectionViewControllerDelegate {
             DispatchQueue.main.async {
                 self.hideObjectLoadingUI()
                 self.placeVirtualObject(loadedObject)
+                
+                /// Multiple virtual objects
+                //virtualObjects.append(loadedObject);
             }
         })
 

@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetMeasureImageView: UIImageView!
     @IBOutlet weak var resetMeasureButton: UIButton!
     lazy var lines: [Line] = []
-    var currentLine: Line?
     lazy var startMeasureValue = SCNVector3()
     lazy var endMeasureValue = SCNVector3()
     var currentMeasureLine: Line?
@@ -164,6 +163,9 @@ class ViewController: UIViewController {
 		session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
         statusViewController.scheduleMessage("请找一块平面来摆放你的物体", inSeconds: 7.5, messageType: .planeEstimation)
+        
+        /// Measure
+        resetLines();
 	}
 
     // MARK: - Focus Square
@@ -221,24 +223,6 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    /// Measure
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        resetMeasureValues()
-        //measureSwitch.isOn=true
-        targetImageView.image = UIImage(named: "targetGreen")
-    }
-    /// Measure
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //measureSwitch.isOn=false
-        targetImageView.image = UIImage(named: "targetWhite")
-        if let line = currentLine {
-            lines.append(line)
-            currentLine = nil
-            resetMeasureButton.isHidden = false
-            resetMeasureImageView.isHidden = false
-        }
-    }
-    
 }
 
 
@@ -275,24 +259,43 @@ extension ViewController {
     
     @IBAction func measureFeatureSwitch()
     {
+        if(!self.measureSwitch.isOn){
+            if let line = currentMeasureLine {
+                lines.append(line)
+                currentMeasureLine = nil
+            }
+        }
+        else
+        {
+            resetMeasureValues()
+        }
+        
        ViewController.isMeasureing = self.measureSwitch.isOn
        ViewController.isAddingObject = !ViewController.isMeasureing;
         
-        self.targetImageView.isHidden = !ViewController.isMeasureing;
+        //self.targetImageView.isHidden = !ViewController.isMeasureing;
+        targetImageView.image = ViewController.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
+        
+        
     }
     
     func setupMeasureView(){
-        self.targetImageView.isHidden = true
-        self.meterImageView.isHidden = true
-        self.messageLabel.text = "Detecting the world…"
-        self.resetMeasureButton.isHidden = true
-        self.resetMeasureImageView.isHidden = true
+        self.targetImageView.isHidden = false
+        // self.meterImageView.isHidden = true
+        // self.messageLabel.text = "Detecting the world…"
     }
 
     func resetMeasureValues(){
         //measureSwitch.isOn=false;
         startMeasureValue = SCNVector3()
         endMeasureValue =  SCNVector3()
+    }
+    
+    func resetLines(){
+        for line in self.lines {
+            line.removeFromParentNode()
+        }
+        lines.removeAll()
     }
 }
 
