@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    var isAddingObject: Bool = true;
+
     
     /*Measure*/
     @IBOutlet weak var targetImageView: UIImageView!
@@ -36,6 +38,8 @@ class ViewController: UIViewController {
     var currentMeasureLine: Line?
     lazy var vectorZero = SCNVector3()
     @IBOutlet var measureSwitch: UISwitch!
+    var isMeasureing: Bool = false
+
     /*Measure*/
 
 
@@ -234,6 +238,7 @@ class ViewController: UIViewController {
             resetMeasureImageView.isHidden = false
         }
     }
+    
 }
 
 
@@ -270,8 +275,10 @@ extension ViewController {
     
     @IBAction func measureFeatureSwitch()
     {
-       //isMeasuring = measureSwitch.isOn
-        //self.targetImageView.isHidden = !self.targetImageView.isHidden;
+        isMeasureing = self.measureSwitch.isOn
+        isAddingObject = !isMeasureing;
+        
+        self.targetImageView.isHidden = !isMeasureing;
     }
     
     func setupMeasureView(){
@@ -283,7 +290,7 @@ extension ViewController {
     }
 
     func resetMeasureValues(){
-        measureSwitch.isOn=false;
+        //measureSwitch.isOn=false;
         startMeasureValue = SCNVector3()
         endMeasureValue =  SCNVector3()
     }
