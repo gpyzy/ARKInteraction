@@ -56,6 +56,9 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     @objc
     func didPan(_ gesture: ThresholdPanGesture) {
+        if(!ViewController.isAddingObject){
+            return
+        }
         switch gesture.state {
         case .began:
             // Check for interaction with a new object.
@@ -103,7 +106,11 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     /// - Tag: didRotate
     @objc
     func didRotate(_ gesture: UIRotationGestureRecognizer) {
+        if(!ViewController.isAddingObject){
+            return
+        }
         guard gesture.state == .changed else { return }
+        
         
         /*
          - Note:
@@ -118,6 +125,9 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     @objc
     func didTap(_ gesture: UITapGestureRecognizer) {
+        if(!ViewController.isAddingObject){
+            return
+        }
         let touchLocation = gesture.location(in: sceneView)
         
         if let tappedObject = sceneView.virtualObject(at: touchLocation) {

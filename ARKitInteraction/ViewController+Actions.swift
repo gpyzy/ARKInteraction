@@ -27,9 +27,9 @@ extension ViewController: UIGestureRecognizerDelegate {
         statusViewController.cancelScheduledMessage(for: .contentPlacement)
         performSegue(withIdentifier: SegueIdentifier.showObjects.rawValue, sender: addObjectButton)
         
-        self.isAddingObject = true;
+        ViewController.isAddingObject = true;
         self.measureSwitch.isOn = false;
-        self.isMeasureing = false;
+        ViewController.isMeasureing = false;
     }
     
     /// Determines if the tap gesture for presenting the `VirtualObjectSelectionViewController` should be used.
