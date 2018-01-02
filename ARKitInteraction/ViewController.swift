@@ -30,15 +30,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetMeasureButton: UIButton!    
     lazy var vectorZero = SCNVector3()
     @IBOutlet var measureSwitch: UISwitch!
-
     /*Measure*/
+    
+    @IBOutlet var planeSwitch:UISwitch!
 
 
     // MARK: - UI Elements
     
     var focusSquare = FocusSquare()
-    
-    var planes = [UUID: Plane]();
+
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -269,7 +269,17 @@ extension ViewController {
         targetImageView.image = sceneView.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
     }
 
-
+    @IBAction func planeSwitchEvent(){
+        for plane in sceneView.planes.values
+        {
+            if(planeSwitch.isOn){
+                plane.reveal();
+            }
+            else{
+                plane.hide()
+            }
+        }
+    }
     
     
     func resetLines(){

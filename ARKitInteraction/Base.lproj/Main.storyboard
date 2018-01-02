@@ -143,17 +143,32 @@
                                 <viewLayoutGuide key="safeArea" id="PiU-3i-kld"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="测量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWO-oZ-eF8">
-                                <rect key="frame" x="13" y="626" width="35" height="21"/>
+                                <rect key="frame" x="45" y="626" width="35" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="rDA-Tz-X8M">
-                                <rect key="frame" x="45" y="621" width="49" height="31"/>
+                                <rect key="frame" x="88" y="621" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="measureFeatureSwitch" destination="BV1-FR-VrT" eventType="touchUpInside" id="WlK-Yl-fxk"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="平面辅助" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIN-6h-wyF">
+                                <rect key="frame" x="25" y="592" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MR0-B9-y2X">
+                                <rect key="frame" x="88" y="587" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="planeSwitchEvent" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ndj-vR-gbh"/>
+                                    <action selector="planeSwitchEvent" destination="BV1-FR-VrT" eventType="valueChanged" id="W8h-IV-fHo"/>
                                 </connections>
                             </switch>
                         </subviews>
@@ -179,6 +194,7 @@
                     <connections>
                         <outlet property="addObjectButton" destination="xcf-ic-uGo" id="uFa-W2-4Iu"/>
                         <outlet property="measureSwitch" destination="rDA-Tz-X8M" id="BpI-BH-s21"/>
+                        <outlet property="planeSwitch" destination="MR0-B9-y2X" id="ZUI-uC-KLJ"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
                         <outlet property="spinner" destination="3cb-dQ-oXx" id="rnE-Xe-cDE"/>
                         <outlet property="targetImageView" destination="VRF-pd-MG1" id="JQp-J3-hI4"/>

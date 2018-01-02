@@ -17,6 +17,8 @@ class VirtualObjectARView: ARSCNView {
     lazy var startMeasureValue = SCNVector3()
     lazy var endMeasureValue = SCNVector3()
 
+    /// Plane
+     var planes = [UUID: Plane]();
     
     var isAddingObject: Bool = true;
 
