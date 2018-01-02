@@ -147,12 +147,12 @@ extension ViewController {
         
         // loadingView.stopAnimating()
         if (sceneView.isMeasureing) {
-            if startMeasureValue == vectorZero {
-                startMeasureValue = worldPosition
-                currentMeasureLine = Line(sceneView: sceneView, startVector: startMeasureValue, unit: unit)
+            if sceneView.startMeasureValue == vectorZero {
+                sceneView.startMeasureValue = worldPosition
+               sceneView.currentMeasureLine = Line(sceneView: sceneView, startVector: sceneView.startMeasureValue, unit: unit)
             }
-            endMeasureValue = worldPosition
-            currentMeasureLine?.update(to: endMeasureValue)
+           sceneView.endMeasureValue = worldPosition
+            sceneView.currentMeasureLine?.update(to: sceneView.endMeasureValue)
         }
     }
 }

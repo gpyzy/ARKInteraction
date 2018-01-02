@@ -27,11 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var meterImageView: UIImageView!
     lazy var unit: DistanceUnit = .centimeter
     @IBOutlet weak var resetMeasureImageView: UIImageView!
-    @IBOutlet weak var resetMeasureButton: UIButton!
-    lazy var lines: [Line] = []
-    lazy var startMeasureValue = SCNVector3()
-    lazy var endMeasureValue = SCNVector3()
-    var currentMeasureLine: Line?
+    @IBOutlet weak var resetMeasureButton: UIButton!    
     lazy var vectorZero = SCNVector3()
     @IBOutlet var measureSwitch: UISwitch!
 
@@ -114,7 +110,7 @@ class ViewController: UIViewController {
         ];
         
         // Measure
-        resetMeasureValues();
+        sceneView.resetMeasureValues();
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -247,23 +243,23 @@ extension ViewController {
     @IBAction func resetButtonTapped(button: UIButton) {
         resetMeasureButton.isHidden = true
         resetMeasureImageView.isHidden = true
-        for line in self.lines {
+        for line in sceneView.lines {
             line.removeFromParentNode()
         }
-        lines.removeAll()
+       sceneView.lines.removeAll()
     }
     
     @IBAction func measureFeatureSwitch()
     {
         if(!self.measureSwitch.isOn){
-            if let line = currentMeasureLine {
-                lines.append(line)
-                currentMeasureLine = nil
+            if let line = sceneView.currentMeasureLine {
+               sceneView.lines.append(line)
+               sceneView.currentMeasureLine = nil
             }
         }
         else
         {
-            resetMeasureValues()
+            sceneView.resetMeasureValues()
         }
         
        sceneView.isMeasureing = self.measureSwitch.isOn
@@ -273,27 +269,14 @@ extension ViewController {
         targetImageView.image = sceneView.isMeasureing ? UIImage(named: "targetGreen") : UIImage(named: "targetWhite")
     }
 
-    func saveCurrentLineAndContinue(){
-        if let line = currentMeasureLine {
-            lines.append(line)
-            currentMeasureLine = nil
-        }
 
-        resetMeasureValues()
     
-    }
-
-    func resetMeasureValues(){
-        //measureSwitch.isOn=false;
-        startMeasureValue = SCNVector3()
-        endMeasureValue =  SCNVector3()
-    }
     
     func resetLines(){
-        for line in self.lines {
+        for line in sceneView.lines {
             line.removeFromParentNode()
         }
-        lines.removeAll()
+        sceneView.lines.removeAll()
     }
 }
 

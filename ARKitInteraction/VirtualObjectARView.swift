@@ -10,7 +10,14 @@ import ARKit
 
 class VirtualObjectARView: ARSCNView {
 
+    /// Measure
     var isMeasureing: Bool = false
+    lazy var lines: [Line] = []
+    var currentMeasureLine: Line?
+    lazy var startMeasureValue = SCNVector3()
+    lazy var endMeasureValue = SCNVector3()
+
+    
     var isAddingObject: Bool = true;
 
     
@@ -226,6 +233,22 @@ class VirtualObjectARView: ARSCNView {
         }
         let closestResult = possibleResults.min(by: { $0.featureDistanceToHitResult < $1.featureDistanceToHitResult })!
         return [closestResult]
+    }
+    
+    func saveCurrentLineAndContinue(){
+        if let line = currentMeasureLine {
+            lines.append(line)
+            currentMeasureLine = nil
+        }
+        
+        resetMeasureValues()
+        
+    }
+    
+    func resetMeasureValues(){
+        //measureSwitch.isOn=false;
+        self.startMeasureValue = SCNVector3()
+        self.endMeasureValue =  SCNVector3()
     }
 
 }

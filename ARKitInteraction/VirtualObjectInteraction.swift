@@ -126,9 +126,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     @objc
     func didTap(_ gesture: UITapGestureRecognizer) {
         if(sceneView.isMeasureing){
-            
-            /// Measure TODO
-            
+            sceneView.saveCurrentLineAndContinue();
         }
         else
         {
