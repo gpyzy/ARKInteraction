@@ -59,6 +59,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         if(!sceneView.isAddingObject){
             return
         }
+        
         switch gesture.state {
         case .began:
             // Check for interaction with a new object.
@@ -74,7 +75,7 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
             
             // The `currentTrackingPosition` is used to update the `selectedObject` in `updateObjectToCurrentTrackingPosition()`.
             currentTrackingPosition = CGPoint(x: currentPosition.x + translation.x, y: currentPosition.y + translation.y)
-
+            
             gesture.setTranslation(.zero, in: sceneView)
             
         case .changed:
@@ -130,17 +131,20 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         }
         else
         {
-            let touchLocation = gesture.location(in: sceneView)
-            
-            if let tappedObject = sceneView.virtualObject(at: touchLocation) {
-                // Select a new object.
-                selectedObject = tappedObject
-            } else if let object = selectedObject {
-                // Teleport the object to whereever the user touched the screen.
-                translate(object, basedOn: touchLocation, infinitePlane: false)
-            }
+            tapVirtualObject(gesture: gesture)
         }
+    }
+    
+    func tapVirtualObject(gesture:UITapGestureRecognizer){
+        let touchLocation = gesture.location(in: sceneView)
         
+        if let tappedObject = sceneView.virtualObject(at: touchLocation) {
+            // Select a new object.
+            selectedObject = tappedObject
+        } else if let object = selectedObject {
+            // Teleport the object to whereever the user touched the screen.
+            translate(object, basedOn: touchLocation, infinitePlane: false)
+        }
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
