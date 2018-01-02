@@ -55,7 +55,13 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         // add planes
         if (anchor is ARPlaneAnchor) {
             let plane = Plane(anchor: anchor as! ARPlaneAnchor, hidden: false, material: Plane.currentMaterial())
-          self.planes[anchor.identifier] = plane
+            if(self.planeSwitch.isOn){
+                plane.reveal();
+            }
+            else{
+                plane.hide();
+            }
+            sceneView.planes[anchor.identifier] = plane
             node.addChildNode(plane)
         }
     }
@@ -69,14 +75,15 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
             }
         }
         
+        /// Plane
         if (anchor is ARPlaneAnchor) {
-            let plane = self.planes[anchor.identifier]
+            let plane = sceneView.planes[anchor.identifier]
             plane?.update(anchor: anchor as! ARPlaneAnchor)        }
         
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        planes.removeValue(forKey: anchor.identifier)
+        sceneView.planes.removeValue(forKey: anchor.identifier)
     }
     
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
@@ -147,12 +154,12 @@ extension ViewController {
         
         // loadingView.stopAnimating()
         if (sceneView.isMeasureing) {
-            if startMeasureValue == vectorZero {
-                startMeasureValue = worldPosition
-                currentMeasureLine = Line(sceneView: sceneView, startVector: startMeasureValue, unit: unit)
+            if sceneView.startMeasureValue == vectorZero {
+                sceneView.startMeasureValue = worldPosition
+               sceneView.currentMeasureLine = Line(sceneView: sceneView, startVector: sceneView.startMeasureValue, unit: unit)
             }
-            endMeasureValue = worldPosition
-            currentMeasureLine?.update(to: endMeasureValue)
+           sceneView.endMeasureValue = worldPosition
+            sceneView.currentMeasureLine?.update(to: sceneView.endMeasureValue)
         }
     }
 }
