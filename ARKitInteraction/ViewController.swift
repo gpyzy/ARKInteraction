@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     /*Measure*/
     
     @IBOutlet var planeSwitch:UISwitch!
+    @IBOutlet var cloneSwitch:UISwitch!
 
 
     // MARK: - UI Elements
@@ -281,6 +282,9 @@ extension ViewController {
         }
     }
     
+    @IBAction func allowCloneSwitchEvent(){
+        VirtualObjectLoader.isDuplicatedAllowed = cloneSwitch.isOn
+    }
     
     func resetLines(){
         for line in sceneView.lines {

@@ -15,7 +15,7 @@ import ARKit
 class VirtualObjectLoader {
 	private(set) var loadedObjects = [VirtualObject]()
     
-    static let isDuplicatedAllowed: Bool = false
+    static var isDuplicatedAllowed: Bool = false
     
     private(set) var isLoading = false
 	
