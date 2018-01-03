@@ -15,6 +15,8 @@ import ARKit
 class VirtualObjectLoader {
 	private(set) var loadedObjects = [VirtualObject]()
     
+    static let isDuplicatedAllowed: Bool = false
+    
     private(set) var isLoading = false
 	
 	// MARK: - Loading object
@@ -25,15 +27,16 @@ class VirtualObjectLoader {
     */
     func loadVirtualObject(_ object: VirtualObject, loadedHandler: @escaping (VirtualObject) -> Void) {
         isLoading = true
-		loadedObjects.append(object)
+        let target = VirtualObjectLoader.isDuplicatedAllowed ?  object.copy() as! VirtualObject : object
+		loadedObjects.append(target)
 		
 		// Load the content asynchronously.
         DispatchQueue.global(qos: .userInitiated).async {
-            object.reset()
-            object.load()
+            target.reset()
+            target.load()
 
             self.isLoading = false
-            loadedHandler(object)
+            loadedHandler(target)
         }
 	}
     
