@@ -16,6 +16,7 @@ class VirtualObjectARView: ARSCNView {
     var currentMeasureLine: Line?
     lazy var startMeasureValue = SCNVector3()
     lazy var endMeasureValue = SCNVector3()
+    var screenTapedForAddingLine:Bool = false
 
     /// Plane
      var planes = [UUID: Plane]();

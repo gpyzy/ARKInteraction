@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetMeasureButton: UIButton!    
     lazy var vectorZero = SCNVector3()
     @IBOutlet var measureSwitch: UISwitch!
+    
+    
     /*Measure*/
     
     @IBOutlet var planeSwitch:UISwitch!
@@ -253,6 +255,7 @@ extension ViewController {
     @IBAction func measureFeatureSwitch()
     {
         if(!self.measureSwitch.isOn){
+            sceneView.screenTapedForAddingLine = false;
             if let line = sceneView.currentMeasureLine {
                sceneView.lines.append(line)
                sceneView.currentMeasureLine = nil

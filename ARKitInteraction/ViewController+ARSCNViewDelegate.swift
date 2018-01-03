@@ -153,7 +153,7 @@ extension ViewController {
         guard let worldPosition = sceneView.realWorldVector(screenPosition: view.center) else { return }
         
         // loadingView.stopAnimating()
-        if (sceneView.isMeasureing) {
+        if (sceneView.isMeasureing && sceneView.screenTapedForAddingLine) {
             if sceneView.startMeasureValue == vectorZero {
                 sceneView.startMeasureValue = worldPosition
                sceneView.currentMeasureLine = Line(sceneView: sceneView, startVector: sceneView.startMeasureValue, unit: unit)
